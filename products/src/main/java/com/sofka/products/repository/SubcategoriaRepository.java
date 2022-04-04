@@ -1,7 +1,7 @@
 package com.sofka.products.repository;
 
 import com.sofka.products.domain.Subcategoria;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Repositorio para la entidad SubCategoria
@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Daniel Gil <danistcruz@gmail.com>
  * @since 1.0.0
  */
-public interface SubcategoriaRepository extends CrudRepository<Subcategoria, Integer> {
+public interface SubcategoriaRepository extends JpaRepository<Subcategoria, Integer> {
 }

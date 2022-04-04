@@ -38,8 +38,8 @@ public class Subcategoria implements Serializable {
      * Punto de enlace con la entidad Categoria (una categoria puede tener muchas subcategorias)
      */
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Categoria.class, optional = false)
-    @JoinColumn(name = "scat_categoria_id")
-    @JsonBackReference
+    @JoinColumn(name = "scat_categoria_id", nullable = false)
+    @JsonBackReference(value = "category-subcategory")
     private Categoria categoria;
 
     /**
@@ -51,7 +51,7 @@ public class Subcategoria implements Serializable {
             cascade = CascadeType.REMOVE,
             mappedBy = "subcategoria"
     )
-    @JsonManagedReference
+    @JsonManagedReference(value = "subcategory-item")
     private List<Item> items = new ArrayList<>();
 
 

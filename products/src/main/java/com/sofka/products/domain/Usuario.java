@@ -46,47 +46,47 @@ public class Usuario implements Serializable {
      * Nombre del usuario
      */
     @Column(name = "usu_username", nullable = false, length = 80)
-    private String Username;
+    private String username;
 
     /**
      * Contraseña del usuario
      */
     @Column(name = "usu_password", nullable = false, length = 32)
-    private String Password;
+    private String password;
 
     /**
      * Fecha de creacion del usuario
      */
-    @Column(name = "usu_created_at", nullable = false)
-    private Instant CreatedAt;
+    @Column(name = "usu_created_at", nullable = false, updatable = false)
+    private Instant createdAt;
 
     /**
      * Fecha de actualizacion del usuario
      */
     @Column(name = "usu_updated_at")
-    private Instant UpdatedAt;
+    private Instant updatedAt;
 
     /**
      * Punto de enlace entre la entidad del Usuario y descargas (un usuario puede tener muchas secciones)
      */
     @OneToMany(
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             targetEntity = Descarga.class,
             cascade = CascadeType.REMOVE,
             mappedBy = "usuario"
     )
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-download")
     private List<Descarga> descargas = new ArrayList<>();
 
     /**
      * Punto de enlace entre la entidad del Usuario y seccion (un usuario puede tener muchas secciones)
      */
     @OneToMany(
-            fetch = FetchType.EAGER,
-            targetEntity = Descarga.class,
+            fetch = FetchType.LAZY,
+            targetEntity = Session.class,
             cascade = CascadeType.REMOVE,
             mappedBy = "usuario"
     )
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-session")
     private List<Session> sessions = new ArrayList<>();
 }

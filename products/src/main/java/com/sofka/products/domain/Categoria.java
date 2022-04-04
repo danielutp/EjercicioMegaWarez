@@ -45,13 +45,13 @@ public class Categoria implements Serializable {
      * Nombre de la categoria
      */
     @Column(name = "cat_nombre", nullable = false, length = 80)
-    private String Nombre;
+    private String nombre;
 
     /**
      * Fecha de la creacion de la categoria
      */
     @Column(name = "cat_created_at", nullable = false)
-    private Instant CreatedAt;
+    private Instant createdAt;
 
     /**
      * Punto de enlace entre la entidad de la categoria y subcategoria (una categoria puede tener muchas subcategorias)
@@ -62,6 +62,6 @@ public class Categoria implements Serializable {
             cascade = CascadeType.REMOVE,
             mappedBy = "categoria"
     )
-    @JsonManagedReference
+    @JsonManagedReference(value = "category-subcategory")
     private List<Subcategoria> subcategorias = new ArrayList<>();
 }

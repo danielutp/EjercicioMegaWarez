@@ -2,6 +2,8 @@ package com.sofka.products.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +47,7 @@ public class Descarga implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class, optional = false)
     @JoinColumn(name = "dwn_usuario_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "user-download")
     private Usuario usuario;
 
     /**
@@ -53,7 +55,7 @@ public class Descarga implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Item.class, optional = false)
     @JoinColumn(name = "dwn_item_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "item-download")
     private Item item;
 
     /**

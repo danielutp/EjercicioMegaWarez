@@ -1,8 +1,6 @@
 package com.sofka.products.controller;
 
 import com.sofka.products.domain.Usuario;
-import com.sofka.products.domain.Session;
-import com.sofka.products.domain.Descarga;
 import com.sofka.products.service.LibretaService;
 import com.sofka.products.utility.LoginData;
 import com.sofka.products.utility.Response;
@@ -110,9 +108,8 @@ public class LibretaController {
         return new ResponseEntity(response, httpStatus);
     }
 
-
     /**
-     * Crea un nuevo contacto en el sistema
+     * Crea un nuevo usuario en el sistema
      *
      * @param usuario Objeto Contacto acrear
      * @return Objeto Response en formato JSON
@@ -120,7 +117,7 @@ public class LibretaController {
      * @author Daniel Gil <danistcruz@gmail.com>
      * @since 1.0.0
      */
-    @PostMapping(path = "/api/v1/contact")
+    @PostMapping(path = "/api/v1/user")
     public ResponseEntity<Response> createUsuario(@RequestBody Usuario usuario) {
         response.restart();
         try {
@@ -136,7 +133,7 @@ public class LibretaController {
     }
 
     /**
-     *
+     * Crea el login para generar token de usuario
      *
      * @author Daniel Gil <danistcruz@gmail.com>
      * @since 1.0.0
@@ -148,7 +145,6 @@ public class LibretaController {
             response.message = "Todo OK";
             response.data = loginData.getToken();
             httpStatus = HttpStatus.OK;
-            // realizo consulta para saber si el usuario y contraseña coinciden
         } catch (DataAccessException exception) {
             getErrorMessageForResponse(exception);
         } catch (Exception exception) {
@@ -158,7 +154,7 @@ public class LibretaController {
     }
 
     /**
-     *
+     * Se verifica token de usuario
      *
      * @author Daniel Gil <danistcruz@gmail.com>
      * @since 1.0.0
@@ -246,5 +242,4 @@ public class LibretaController {
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
-
 }

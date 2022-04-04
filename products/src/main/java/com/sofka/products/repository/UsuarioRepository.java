@@ -1,7 +1,7 @@
 package com.sofka.products.repository;
 
 import com.sofka.products.domain.Usuario;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Repositorio para la entidad Usuario
@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Daniel Gil <danistcruz@gmail.com>
  * @since 1.0.0
  */
-public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 }

@@ -39,7 +39,7 @@ public class Item implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Subcategoria.class, optional = false)
     @JoinColumn(name = "itm_subcategoria_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference(value = "subcategory-item")
     private Subcategoria subcategoria;
 
     /**
@@ -63,6 +63,6 @@ public class Item implements Serializable {
             cascade = CascadeType.REMOVE,
             mappedBy = "item"
     )
-    @JsonManagedReference
+    @JsonManagedReference(value = "item-download")
     private List<Descarga> descargas = new ArrayList<>();
 }

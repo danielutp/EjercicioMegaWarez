@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -37,11 +36,12 @@ public class LibretaService implements ILibreta {
      */
     @Override
     @Transactional(readOnly = true)
-    public List<Usuario> getList() { return (List<Usuario>) usuarioRepository.findAll();
+    public List<Usuario> getList() {
+        return usuarioRepository.findAll();
     }
 
     /**
-     * Crea un contacto en el sistema
+     * Crea un usuario en el sistema
      *
      * @param usuario Objeto del usuario a crear
      * @return Objeto del usuario creado

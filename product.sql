@@ -1,5 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS product DEFAULT CHARACTER SET utf8 ;
 USE product ;
+
 /************ Update: Tables ***************/
 
 /******************** Add Table: categoria ************************/
@@ -11,7 +12,18 @@ CREATE TABLE categoria
 	cat_nombre VARCHAR(80) NOT NULL,
 	cat_created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(1,'lacteos',"2022-01-01");
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(2,'belleza',"2022-01-01");
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(3,'carniceria',"2022-01-01");
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(4,'panaderia',"2022-01-02");
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(5,'granos',"2022-02-02");
+insert into categoria(cat_id,cat_nombre,cat_created_at)
+value(6,'bebidas',"2022-01-01");
 /* Add Indexes */
 CREATE UNIQUE INDEX categoria_cat_nombre_Idx ON categoria (cat_nombre) USING BTREE;
 

@@ -1,7 +1,7 @@
 package com.sofka.products.repository;
 
 import com.sofka.products.domain.Categoria;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Repositorio para la entidad Categoria
@@ -10,5 +10,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author Daniel Gil <danistcruz@gmail.com>
  * @since 1.0.0
  */
-public interface CategoriaRepository extends CrudRepository<Categoria, Integer> {
+public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+
 }

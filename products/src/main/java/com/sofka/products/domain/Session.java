@@ -45,7 +45,7 @@ public class Session implements Serializable {
      */
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Usuario.class, optional = false)
     @JoinColumn(name = "ses_usuario_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("user-session")
     private Usuario usuario;
 
     /**
@@ -58,5 +58,5 @@ public class Session implements Serializable {
      * Fecha de creacion de la session
      */
     @Column(name = "ses_created_at")
-    private Instant CreatedAt;
+    private Instant createdAt;
 }
